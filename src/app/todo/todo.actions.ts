@@ -4,6 +4,7 @@ export const AGGREGATE_TODO = '[TODO] AGGREGATE TODO';
 export const TOGGLE_TODO = '[TODO] TOGGLE TODO';
 export const EDIT_TODO = '[TODO] EDIT TODO';
 export const DELETE_TODO = '[TODO] DELETE TODO';
+export const TOGGLE_ALL_TODO = '[TODO] TOGGLE ALL TODO';
 
 export class AggregateTodoAction implements Action {
   readonly type = AGGREGATE_TODO;
@@ -32,4 +33,11 @@ export class DeleteTodoAction implements Action {
   }
 }
 
-export type Actions = AggregateTodoAction | ToggleTodoAction | EditTodoAction | DeleteTodoAction;
+export class ToggleAllTodoAction implements Action {
+  readonly type = TOGGLE_ALL_TODO;
+
+  constructor(public completed: boolean) {
+  }
+}
+
+export type Actions = AggregateTodoAction | ToggleTodoAction | EditTodoAction | DeleteTodoAction | ToggleAllTodoAction;

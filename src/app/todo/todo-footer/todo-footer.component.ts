@@ -3,6 +3,7 @@ import * as fromFilterActions from '../../filter/filter.actions';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../app.reducers';
 import * as fromActions from '../todo.actions';
+import {Todo} from '../model/todo.model';
 
 @Component({
   selector: 'app-todo-footer',
@@ -10,13 +11,17 @@ import * as fromActions from '../todo.actions';
   styles: []
 })
 export class TodoFooterComponent implements OnInit {
+
+  slopes: number;
   filterValues: fromFilterActions.fliterValues[] = ['all', 'completed', 'slopes'];
   selectedFilter: fromFilterActions.fliterValues;
+
   constructor(private store: Store<AppState>) {
   }
 
   ngOnInit() {
     this.store.subscribe(state => {
+      this.slopesCounter(state.todos);
       this.selectedFilter = state.filter;
     });
   }
@@ -24,5 +29,9 @@ export class TodoFooterComponent implements OnInit {
   changerFilter(filter: fromFilterActions.fliterValues) {
     const action = new fromFilterActions.SetFilterAction(filter);
     this.store.dispatch(action);
+  }
+
+  slopesCounter(todos: Todo[]) {
+    this.slopes = todos.filter(todo => !todo.completed).length;
   }
 }

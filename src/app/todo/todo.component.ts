@@ -18,7 +18,7 @@ export class TodoComponent implements OnInit {
   }
 
   toggleAll() {
-     this.completed = !this.completed;
+    this.completed = !this.completed;
     const action = new ToggleAllTodoAction(this.completed);
     this.store.dispatch(action);
   }

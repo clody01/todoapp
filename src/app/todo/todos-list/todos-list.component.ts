@@ -15,7 +15,6 @@ todos: Todo[] = [];
   ngOnInit() {
     this.store.subscribe(state => {
       this.todos = state.todos;
-      console.log(this.todos);
     });
   }
 

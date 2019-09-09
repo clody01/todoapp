@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import * as fromFilterActions from '../../filter/filter.actions';
+import * as fromTodoActions from '../todo.actions';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../app.reducers';
 import * as fromActions from '../todo.actions';
@@ -33,5 +34,10 @@ export class TodoFooterComponent implements OnInit {
 
   slopesCounter(todos: Todo[]) {
     this.slopes = todos.filter(todo => !todo.completed).length;
+  }
+
+  deleteAllCompleted() {
+    const action = new fromTodoActions.DeleteAllTodoAction();
+    this.store.dispatch(action);
   }
 }

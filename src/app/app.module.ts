@@ -13,6 +13,8 @@ import {StoreModule} from '@ngrx/store';
 import {todoReducer} from './todo/toto.reducer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {ReactiveFormsModule} from '@angular/forms';
+import {filterReducer} from './filter/filter.reducer';
+import * as fromAppReducer from './app.reducers';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import {ReactiveFormsModule} from '@angular/forms';
   imports: [
     ReactiveFormsModule,
     BrowserModule,
-    StoreModule.forRoot({todos: todoReducer}),
+    StoreModule.forRoot(fromAppReducer.AppReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: false,

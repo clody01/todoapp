@@ -1,7 +1,7 @@
 import {Action} from '@ngrx/store';
 
 export const SET_FILTER = '[FILTER] SET FILTER';
-export type fliterValues =  'all' | 'completeds' | 'slopes';
+export type fliterValues =  'all' | 'completed' | 'slopes';
 
 export class SetFilterAction implements Action {
   readonly type = SET_FILTER;

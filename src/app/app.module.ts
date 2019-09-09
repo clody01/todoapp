@@ -15,6 +15,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {ReactiveFormsModule} from '@angular/forms';
 import {filterReducer} from './filter/filter.reducer';
 import * as fromAppReducer from './app.reducers';
+import { FilterPipe } from './filter/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import * as fromAppReducer from './app.reducers';
     TodosListComponent,
     TodoFooterComponent,
     TodoItemComponent,
-    TodoAddComponent
+    TodoAddComponent,
+    FilterPipe
   ],
   imports: [
     ReactiveFormsModule,

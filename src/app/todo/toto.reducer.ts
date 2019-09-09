@@ -8,6 +8,18 @@ export function todoReducer(state = initialState, action: fromTodo.Actions): Tod
     case fromTodo.AGGREGATE_TODO:
       const todo = new Todo(action.text);
       return [...state, todo];
+    case fromTodo.TOGGLE_TODO:
+
+      return state.map(editedTodo => {
+        if (editedTodo.id === action.id) {
+          return {
+            ...editedTodo,
+            completed: ! editedTodo.completed
+          };
+        } else {
+          return editedTodo;
+        }
+      });
     default:
       return state;
   }
